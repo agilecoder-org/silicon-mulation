@@ -4,10 +4,10 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 
 export default function BlogPage() {
     return (
-        <div className="min-h-screen pt-24 pb-16 px-6">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen pt-24 pb-16">
+            <div className="section-container max-w-4xl mx-auto">
                 <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Deep Dives</h1>
+                    <h1 className="heading-section mb-4">Deep Dives</h1>
                     <p className="text-muted-foreground text-lg">
                         Technical breakdowns, tutorials, and state-of-the-union reports.
                     </p>

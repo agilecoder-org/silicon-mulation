@@ -4,11 +4,11 @@ import { MessageSquare, Github, Twitter, Youtube } from "lucide-react";
 
 export default function CommunityPage() {
     return (
-        <div className="min-h-screen pt-24 pb-16 px-6 flex items-center justify-center">
-            <div className="max-w-4xl w-full">
+        <div className="min-h-screen pt-24 pb-16 flex items-center justify-center">
+            <div className="section-container max-w-4xl w-full">
 
                 <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Join the Lab</h1>
+                    <h1 className="heading-section mb-4">Join the Lab</h1>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                         Silicon M-ulation is more than a website. It's a collective effort to document
                         and improve the state of Mac gaming.

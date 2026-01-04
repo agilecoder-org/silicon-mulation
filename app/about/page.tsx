@@ -4,12 +4,12 @@ import { Target, Heart, Shield, Database } from "lucide-react";
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen pt-24 pb-16 px-6">
-            <div className="max-w-3xl mx-auto">
+        <div className="min-h-screen pt-24 pb-16">
+            <div className="section-container max-w-3xl mx-auto">
 
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">Built for the <br /><span className="text-primary">Silicon Era.</span></h1>
+                    <h1 className="heading-section mb-6">Built for the <br /><span className="text-primary">Silicon Era.</span></h1>
                     <p className="text-xl text-muted-foreground leading-relaxed">
                         The definitive resource for gaming and emulation on Apple Silicon.
                         No clickbait. No rumors. Just tested data.

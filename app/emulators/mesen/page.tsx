@@ -7,8 +7,8 @@ import mesenLogo from "@/assets/emulators/mesen.png";
 
 export default function MesenPage() {
     return (
-        <div className="min-h-screen bg-[#09090b] text-zinc-100 pt-24 pb-24 px-6 selection:bg-cyan-500/30">
-            <div className="max-w-6xl mx-auto">
+        <div className="min-h-screen bg-[#09090b] text-zinc-100 pt-24 pb-24 selection:bg-cyan-500/30">
+            <div className="section-container">
                 <Link href="/emulation" className="group inline-flex items-center text-sm text-zinc-500 hover:text-cyan-400 mb-12 transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
                     Back to Hub
@@ -24,7 +24,7 @@ export default function MesenPage() {
                         <div className="flex-1 space-y-6">
                             <div>
                                 <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
-                                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">Mesen</h1>
+                                    <h1 className="heading-section text-white">Mesen</h1>
                                     <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
                                         Perfect
                                     </span>

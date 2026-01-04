@@ -109,8 +109,8 @@ const getStatusStyles = (status: string) => {
 
 export default function EmulationPage() {
     return (
-        <div className="min-h-screen bg-background pt-24 pb-24 px-6">
-            <div className="max-w-6xl mx-auto">
+        <div className="min-h-screen bg-background pt-24 pb-24">
+            <div className="section-container">
 
                 {/* Hero */}
                 <div className="text-center mb-24">
@@ -118,7 +118,7 @@ export default function EmulationPage() {
                         <BookOpen className="w-4 h-4" />
                         <span>Knowledge Base</span>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                    <h1 className="heading-section mb-6">
                         Core <span className="text-primary">Concepts</span>
                     </h1>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">

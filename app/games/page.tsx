@@ -144,13 +144,13 @@ export default function GamesPage() {
     };
 
     return (
-        <div className="min-h-screen pt-24 pb-16 px-6 bg-background">
-            <div className="max-w-7xl mx-auto">
+        <div className="min-h-screen pt-24 pb-16 bg-background">
+            <div className="section-container">
 
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                     <div className="space-y-4">
-                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Tested Games</h1>
+                        <h1 className="heading-section">Tested Games</h1>
                         <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
                             Explore performance reports from the community on Macintosh Silicon.
                             Filter by device, emulator, and playability status.

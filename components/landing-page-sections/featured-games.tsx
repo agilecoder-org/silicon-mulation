@@ -79,7 +79,7 @@ const FeaturedGamesSection = () => {
                             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                 {/* Game info */}
                                 <div>
-                                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                    <h3 className="heading-subsection text-foreground mb-3 group-hover:text-primary transition-colors">
                                         {game.name}
                                     </h3>
                                     <div className="flex flex-wrap items-center gap-3 text-sm md:text-base">

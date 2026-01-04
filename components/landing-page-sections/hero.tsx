@@ -52,7 +52,7 @@ export default function Hero() {
             <div className="relative z-10 max-w-4xl space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
                 {/* TITLE */}
-                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight uppercase leading-[0.9]">
+                <h1 className="heading-hero uppercase leading-[0.9]">
                     Silicon <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-foreground to-accent">
                         M-ulation
