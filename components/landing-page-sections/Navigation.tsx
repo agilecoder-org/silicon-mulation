@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-    { label: "Emulation", href: "/emulators" },
+    { label: "Emulation", href: "/emulation" },
     { label: "Games", href: "/games" },
     { label: "Tools", href: "/tools" },
     { label: "Blogs", href: "/blogs" },
