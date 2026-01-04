@@ -1,42 +1,43 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import gameZelda from "@/assets/game-zelda.jpg";
-import gameGow from "@/assets/game-gow.jpg";
-import gameRe4 from "@/assets/game-re4.jpg";
-import gameElden from "@/assets/game-elden.jpg";
+
+import gameGow3 from "@/assets/games/gow3.jpg";
+import gameRe5 from "@/assets/games/resident-evil-5.png";
+import gameTombRaider from "@/assets/games/tomb-raider-2013.jpg";
+import gameWwe2k from "@/assets/games/wwe-2k17.jpg";
 
 const games = [
     {
         id: 1,
-        name: "The Legend of Zelda: Tears of the Kingdom",
-        emulator: "Ryujinx",
+        name: "God of War III",
+        emulator: "RPCS3",
         chip: "M3 Pro",
-        fps: "45-60",
-        image: gameZelda,
+        fps: "30–45",
+        image: gameGow3,
     },
     {
         id: 2,
-        name: "God of War Ragnarök",
+        name: "Resident Evil 5",
         emulator: "RPCS3",
-        chip: "M4 Max",
-        fps: "30-45",
-        image: gameGow,
+        chip: "M2 Pro",
+        fps: "45–60",
+        image: gameRe5,
     },
     {
         id: 3,
-        name: "Resident Evil 4 Remake",
-        emulator: "CrossOver",
-        chip: "M2 Ultra",
-        fps: "60+",
-        image: gameRe4,
+        name: "Tomb Raider (2013)",
+        emulator: "RPCS3",
+        chip: "M3 Max",
+        fps: "40–55",
+        image: gameTombRaider,
     },
     {
         id: 4,
-        name: "Elden Ring",
-        emulator: "Game Porting Toolkit",
-        chip: "M3 Max",
-        fps: "40-55",
-        image: gameElden,
+        name: "WWE 2K14",
+        emulator: "RPCS3",
+        chip: "M2 Pro",
+        fps: "30–50",
+        image: gameWwe2k,
     },
 ];
 

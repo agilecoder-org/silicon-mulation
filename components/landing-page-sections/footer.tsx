@@ -1,4 +1,4 @@
-import { Github, Twitter, Youtube } from "lucide-react";
+import { Youtube } from "lucide-react";
 
 const Footer = () => {
     return (
@@ -15,22 +15,16 @@ const Footer = () => {
 
                     {/* Links */}
                     <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-                        <a href="#" className="hover:text-foreground transition-colors">Games</a>
-                        <a href="#" className="hover:text-foreground transition-colors">Emulators</a>
-                        <a href="#" className="hover:text-foreground transition-colors">Benchmarks</a>
-                        <a href="#" className="hover:text-foreground transition-colors">Tools</a>
-                        <a href="#" className="hover:text-foreground transition-colors">About</a>
+                        <a href="/games" className="hover:text-foreground transition-colors">Games</a>
+                        <a href="/emulators" className="hover:text-foreground transition-colors">Emulators</a>
+                        <a href="/benchmarks" className="hover:text-foreground transition-colors">Benchmarks</a>
+                        <a href="/tools" className="hover:text-foreground transition-colors">Tools</a>
+                        <a href="/about" className="hover:text-foreground transition-colors">About</a>
                     </div>
 
                     {/* Social */}
                     <div className="flex items-center gap-4">
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Github className="w-5 h-5" />
-                        </a>
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Twitter className="w-5 h-5" />
-                        </a>
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                        <a href="https://www.youtube.com/@m-ulation" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
                             <Youtube className="w-5 h-5" />
                         </a>
                     </div>

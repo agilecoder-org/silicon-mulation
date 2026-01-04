@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
+import { Cpu, Zap, Thermometer, Monitor } from "lucide-react";
 
 const chips = [
     { name: "M1", variant: "Air" },
@@ -9,89 +10,130 @@ const chips = [
     { name: "M4", variant: "Pro" },
 ];
 
-const ChipPerformanceSection = () => {
-    const [fps, setFps] = useState(30);
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef<HTMLDivElement>(null);
+const chipProfiles = [
+    {
+        chip: "M1",
+        tier: "Entry-level emulation",
+        summary: "Stable for PS2, GameCube, and lighter workloads.",
+        signals: ["Playable", "Occasional dips", "Thermals manageable"],
+    },
+    {
+        chip: "M2",
+        tier: "Mid-range emulation",
+        summary: "Consistent performance across most supported emulators.",
+        signals: ["Smooth", "Good frame pacing", "Cool under load"],
+    },
+    {
+        chip: "M3",
+        tier: "High-performance emulation",
+        summary: "Handles demanding titles with minimal compromise.",
+        signals: ["Very smooth", "High resolutions", "Stable thermals"],
+    },
+    {
+        chip: "M4",
+        tier: "Best possible experience",
+        summary: "Maximum headroom for modern and experimental emulation.",
+        signals: ["Near-native feel", "High scaling", "Excellent stability"],
+    },
+];
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
-    useEffect(() => {
-        if (isVisible && fps < 60) {
-            const timer = setTimeout(() => {
-                setFps(prev => Math.min(prev + 2, 60));
-            }, 50);
-            return () => clearTimeout(timer);
-        }
-    }, [isVisible, fps]);
+export default function ChipPerformanceSection() {
+    const [active, setActive] = useState(0);
+    const profile = chipProfiles[active];
 
     return (
-        <section ref={sectionRef} className="relative py-32 overflow-hidden">
-            {/* Background effects */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
+        <section className="relative py-36 overflow-hidden">
+            {/* Ambient background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+            <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-primary/10 blur-[180px] rounded-full" />
 
-            <div className="relative z-10 section-container">
-                {/* Chip display */}
-                <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-16">
+            <div className="relative z-10 section-container max-w-5xl mx-auto space-y-16 text-center">
+
+                {/* Header */}
+                <div className="space-y-4">
+                    <p className="text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                        Apple Silicon
+                    </p>
+                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+                        Performance, realistically
+                    </h2>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                        We don’t rely on synthetic scores.
+                        Each chip is evaluated based on real gameplay behaviour and stability.
+                    </p>
+                </div>
+
+                {/* Chip selector */}
+                <div className="flex flex-wrap justify-center gap-3">
                     {chips.map((chip, index) => (
-                        <div
+                        <button
                             key={chip.name}
-                            className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            onClick={() => setActive(index)}
+                            className={`px-5 py-2 rounded-full text-sm font-medium transition ${active === index
+                                    ? "bg-foreground text-background"
+                                    : "border border-border/50 text-muted-foreground hover:text-foreground"
                                 }`}
-                            style={{ transitionDelay: `${index * 100}ms` }}
                         >
-                            <div className="relative">
-                                <span className="text-5xl md:text-7xl lg:text-8xl font-bold text-mono gradient-text-cyan glow-cyan">
-                                    {chip.name}
-                                </span>
-                                <span className="absolute -top-2 -right-6 text-sm text-muted-foreground font-medium">
-                                    {chip.variant}
-                                </span>
-                            </div>
-                        </div>
+                            {chip.name} {chip.variant}
+                        </button>
                     ))}
                 </div>
 
-                {/* FPS Animation */}
-                <div className={`text-center mb-12 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}>
-                    <div className="inline-flex items-baseline gap-2">
-                        <span className="text-6xl md:text-8xl font-bold text-mono fps-display">
-                            {fps}
-                        </span>
-                        <span className="text-2xl md:text-3xl text-muted-foreground font-medium">FPS</span>
+                {/* Profile */}
+                <div className="max-w-3xl mx-auto space-y-8">
+
+                    <div className="space-y-2">
+                        <p className="text-sm uppercase tracking-widest text-muted-foreground">
+                            {profile.tier}
+                        </p>
+                        <p className="text-xl md:text-2xl font-medium">
+                            {profile.summary}
+                        </p>
+                    </div>
+
+                    {/* Signals */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+                        <Signal icon={Monitor} label="Frame behaviour" value={profile.signals[0]} />
+                        <Signal icon={Zap} label="Consistency" value={profile.signals[1]} />
+                        <Signal icon={Thermometer} label="Thermals" value={profile.signals[2]} />
                     </div>
                 </div>
 
-                {/* Tagline */}
-                <div className={`text-center max-w-3xl mx-auto transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}>
-                    <p className="text-xl md:text-2xl lg:text-3xl text-foreground font-medium mb-8">
-                        From M1 Air to M4 Pro — we test what actually runs.
-                    </p>
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
                     <button className="cta-secondary">
-                        Check your Mac
+                        Explore Tested Games
+                    </button>
+                    <button className="cta-secondary">
+                        See Emulator Support
                     </button>
                 </div>
             </div>
         </section>
     );
-};
+}
 
-export default ChipPerformanceSection;
+/* Helper */
+function Signal({
+    icon: Icon,
+    label,
+    value,
+}: {
+    icon: any;
+    label: string;
+    value: string;
+}) {
+    return (
+        <div className="flex items-start gap-4 p-4 rounded-xl border border-border/40 bg-muted/20">
+            <Icon className="w-5 h-5 text-primary mt-1" />
+            <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                    {label}
+                </p>
+                <p className="text-base font-medium">
+                    {value}
+                </p>
+            </div>
+        </div>
+    );
+}

@@ -12,14 +12,15 @@ export default function Hero() {
             const y = (e.clientY / window.innerHeight - 0.5) * 30
             setMouse({ x, y })
         }
+
         window.addEventListener("mousemove", onMove)
         return () => window.removeEventListener("mousemove", onMove)
     }, [])
 
     return (
-        <section className="relative h-screen w-full overflow-hidden flex items-center justify-center text-center px-6">
+        <section className="relative h-screen w-full overflow-hidden flex items-center justify-center px-6 text-center">
 
-            {/* BACKGROUND */}
+            {/* CINEMATIC BACKGROUND */}
             <div
                 className="absolute inset-0"
                 style={{
@@ -27,7 +28,7 @@ export default function Hero() {
                     transition: "transform 0.25s ease-out",
                 }}
             >
-                {/* Base image */}
+                {/* Base image + dark tint */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
@@ -38,49 +39,54 @@ export default function Hero() {
                     }}
                 />
 
-                {/* Edge gradients */}
+                {/* Edge gradients for focus */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
             </div>
 
-            {/* SOFT GLOW BLOBS */}
+            {/* SOFT AMBIENT GLOWS */}
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 blur-[140px] rounded-full" />
             <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 blur-[120px] rounded-full" />
 
-            {/* CONTENT */}
-            <div className="relative z-10 max-w-5xl space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                {/* Title */}
-                <h1 className="text-7xl md:text-9xl font-bold tracking-tighter uppercase leading-[0.8] pr-4">
+            {/* HERO CONTENT */}
+            <div className="relative z-10 max-w-4xl space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+
+                {/* TITLE */}
+                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight uppercase leading-[0.9]">
                     Silicon <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-foreground to-accent">
                         M-ulation
                     </span>
                 </h1>
 
-                {/* Subtitle */}
-                <div className="space-y-2">
-                    <p className="text-xl md:text-2xl font-light tracking-widest uppercase text-muted-foreground">
+                {/* IDENTITY + AUTHORITY */}
+                <div className="space-y-3">
+                    <p className="text-sm md:text-base font-medium tracking-[0.3em] uppercase text-muted-foreground">
                         Gaming & Emulation on Apple Silicon
                     </p>
-                    <p className="text-3xl md:text-5xl font-mono font-bold tracking-tight text-secondary italic">
-                        Can your Mac run Games?
+
+                    <p className="text-2xl md:text-4xl font-mono font-semibold tracking-tight text-foreground">
+                        Tested. Measured. Proven.
                     </p>
                 </div>
 
-                {/* CTAs */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+                {/* CTA BUTTONS */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
                     <Button
                         size="xl"
-                        className="bg-foreground cursor-pointer text-background hover:bg-primary transition-colors font-bold uppercase tracking-tighter px-12 h-14 text-lg"
+                        asChild
+                        className="bg-foreground text-background hover:bg-primary transition-colors font-semibold uppercase tracking-wide px-10 h-13 text-base"
                     >
-                        Explore Games
+                        <a href="/games">Explore Games</a>
                     </Button>
+
                     <Button
                         size="xl"
                         variant="outline"
-                        className="border-foreground/20 cursor-pointer hover:border-accent hover:text-black bg-transparent font-bold uppercase tracking-tighter px-12 h-14 text-lg"
+                        asChild
+                        className="border-foreground/30 hover:border-accent hover:text-black transition-colors font-semibold uppercase tracking-wide px-10 h-13 text-base bg-transparent"
                     >
-                        Browse Emulators
+                        <a href="/emulators">Browse Emulators</a>
                     </Button>
                 </div>
             </div>
