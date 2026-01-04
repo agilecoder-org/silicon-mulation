@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   },
 };
 
+import Navigation from "@/components/landing-page-sections/Navigation";
+import Footer from "@/components/landing-page-sections/footer";
+
+// ... imports
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,9 +33,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        {children}
+        <div className="min-h-screen flex flex-col">
+          {/* Film grain overlay */}
+          <div className="film-grain" />
+
+          <Navigation />
+
+          <main className="flex-1">
+            {children}
+          </main>
+
+          <Footer />
+        </div>
       </body>
     </html>
   );
