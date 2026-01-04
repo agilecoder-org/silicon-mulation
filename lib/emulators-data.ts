@@ -75,3 +75,43 @@ export const EMULATOR_TEXT_DATA: Record<string, Omit<EmulatorDetail, "logo">> = 
         appleSiliconNotes: "Requires .NET runtime. Heavier than other emulators but provides the most accurate experience.",
     }
 };
+
+export const GAME_STATUSES = ["Excellent", "Playable", "Not Playable"] as const;
+export type GameStatus = typeof GAME_STATUSES[number];
+
+export interface GameDetail {
+    id: number;
+    name: string;
+    emulator: string;
+    chip: string;
+    fps: string;
+    status: GameStatus;
+    // We'll keep image as string for now to avoid static import issues in data file if strictly needed, 
+    // but typically Next.js images are StaticImageData. 
+    // For this file to be pure TS without image imports, we might need a workaround or just keep it simple.
+    // Let's assume we pass the image *object* or path. 
+    // Since the current page.tsx uses imports, we can keep the data there OR export a function/array that accepts images.
+    // For simplicity in this file, let's keep the type generic for image or handle data in page.tsx.
+    // However, the plan said "Export a list of games". 
+    // Let's define the type here and export the data from here, but we will need to handle image imports.
+    // Since we cant easily import images here without changing file extension to .tsx or worrying about bundler, 
+    // let's define the SHAPE here, and maybe keep the DATA in page.tsx *OR* move data to a .tsx file.
+    // Actually, `lib/emulators-data.ts` is .ts. Importing images might work if configured, but let's just use string paths or keep data in page.tsx for now if images are local assets.
+    // Wait, the plan said "Export a list of games (migrating from page.tsx)".
+    // Let's try to move it. If imports fail, we can fix.
+    image?: any; // StaticImageData placeholder
+    genre: string;
+}
+
+// Since we can't easily import local images in a pure .ts lib file without some config assurance, 
+// and the original file has imports like `import gameGow3 from "@/assets/games/gow3.jpg";`
+// We will export the ARRAY from here but we might need to change this file to .tsx or just rely on the user having image declarations. 
+// Actually, let's just export the helper types and constants here, and keep the specific game list with image imports in `page.tsx` or a new `data/games.ts` (which likely doesn't exist).
+// To follow the plan strictly "Export a list of games", I should probably create a new file or move this to a .tsx if I want to include image imports easily. 
+// BUT, I can just use strings for image paths if they were in public. They are in assets.
+// Let's stick to defining types and constants here to be safe and CLEAN, 
+// and then I'll construct the data in `page.tsx` or a new component to avoid breaking image imports.
+// RE-READING PLAN: "Export a list of games (migrating from page.tsx)".
+// Okay, I will try to support it. But looking at the file `lib/emulators-data.ts`, it seems it's just text data now.
+// Let's just add types and constants for now. I will refactor the data in page.tsx.
+
