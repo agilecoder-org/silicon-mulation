@@ -158,13 +158,14 @@ export default function EmulatorsConsolesSection() {
                     <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-40" />
 
                     {/* Lineage layout */}
-                    <div className="relative flex items-end gap-16 md:gap-24">
-
-                        <ConsoleItem image={ps3Console} label="PlayStation 3" width={320} z="z-30" />
-                        <ConsoleItem image={ps2Console} label="PlayStation 2" width={260} z="z-20" offset />
-                        <ConsoleItem image={ps1Console} label="PlayStation 1" width={220} z="z-10" offset />
-                        <ConsoleItem image={nesConsole} label="NES" width={200} z="z-0" offset />
-                        <ConsoleItem image={gbaConsole} label="Game Boy Advance" width={160} z="z-0" offset />
+                    <div className="overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 md:pb-0 scrollbar-hide">
+                        <div className="relative flex items-end gap-8 md:gap-24 min-w-max">
+                            <ConsoleItem image={ps3Console} label="PlayStation 3" width={280} z="z-30" />
+                            <ConsoleItem image={ps2Console} label="PlayStation 2" width={220} z="z-20" offset />
+                            <ConsoleItem image={ps1Console} label="PlayStation 1" width={180} z="z-10" offset />
+                            <ConsoleItem image={nesConsole} label="NES" width={160} z="z-0" offset />
+                            <ConsoleItem image={gbaConsole} label="Game Boy Advance" width={120} z="z-0" offset />
+                        </div>
                     </div>
                 </div>
 

@@ -27,7 +27,7 @@ const FeaturedGamesSection = () => {
                     <Link
                         href={`/games/${game.slug}`}
                         key={game.id}
-                        className="game-strip group cursor-pointer block relative h-[280px] md:h-[180px] overflow-hidden rounded-3xl border border-border/20 hover:border-primary/50"
+                        className="game-strip group cursor-pointer block relative h-[240px] md:h-[180px] overflow-hidden rounded-3xl border border-border/20 hover:border-primary/50"
                         style={{ animationDelay: `${index * 100}ms` }}
                     >
                         {/* Background image */}

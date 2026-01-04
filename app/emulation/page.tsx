@@ -206,10 +206,6 @@ export default function EmulationPage() {
                 <div className="border-t border-border/40 pt-24">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-medium mb-4">
-                                <Terminal className="w-4 h-4" />
-                                <span>The Tools</span>
-                            </div>
                             <h2 className="text-3xl md:text-5xl font-bold mb-4">Emulator Reference</h2>
                             <p className="text-muted-foreground max-w-xl">
                                 Curated, tested, and verified for Apple Silicon.

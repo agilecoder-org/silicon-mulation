@@ -67,7 +67,7 @@ export default async function GameDetailPage(props: { params: Promise<{ slug: st
                                 </Badge>
                             </div>
 
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-sm">
+                            <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-white drop-shadow-sm">
                                 {game.name}
                             </h1>
 
