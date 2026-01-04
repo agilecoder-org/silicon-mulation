@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Cpu, Zap, Gamepad } from "lucide-react";
+import Link from "next/link";
 
 import { HardDrive, Gauge, TrendingUp, Layers } from 'lucide-react';
 
@@ -155,26 +156,26 @@ const ToolsTeaserSection = () => {
 
                         {/* CTAs */}
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <button className="cta-primary group">
+                            <Link href="/games" className="cta-primary group inline-flex items-center justify-center">
                                 Check Compatibility
                                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                            </button>
+                            </Link>
 
-                            <button className="cta-secondary group">
+                            <Link href="/tools/controller" className="cta-secondary group inline-flex items-center justify-center">
                                 <Gamepad className="w-4 h-4 mr-2" />
                                 Test Controller
-                            </button>
+                            </Link>
                         </div>
 
                         {/* Secondary link */}
                         <div className="mt-6">
-                            <a
+                            <Link
                                 href="/tools"
                                 className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2"
                             >
                                 View all tools
                                 <ArrowRight className="w-3 h-3" />
-                            </a>
+                            </Link>
                         </div>
 
                     </div>

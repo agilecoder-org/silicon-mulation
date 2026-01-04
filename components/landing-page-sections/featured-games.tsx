@@ -1,51 +1,18 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-import gameGow3 from "@/assets/games/gow3.jpg";
-import gameRe5 from "@/assets/games/resident-evil-5.png";
-import gameTombRaider from "@/assets/games/tomb-raider-2013.jpg";
-import gameWwe2k from "@/assets/games/wwe-2k17.jpg";
+import { ALL_GAMES } from "@/lib/games-data";
 
-const games = [
-    {
-        id: 1,
-        name: "God of War III",
-        emulator: "RPCS3",
-        chip: "M3 Pro",
-        fps: "30–45",
-        image: gameGow3,
-    },
-    {
-        id: 2,
-        name: "Resident Evil 5",
-        emulator: "RPCS3",
-        chip: "M2 Pro",
-        fps: "45–60",
-        image: gameRe5,
-    },
-    {
-        id: 3,
-        name: "Tomb Raider (2013)",
-        emulator: "RPCS3",
-        chip: "M3 Max",
-        fps: "40–55",
-        image: gameTombRaider,
-    },
-    {
-        id: 4,
-        name: "WWE 2K14",
-        emulator: "RPCS3",
-        chip: "M2 Pro",
-        fps: "30–50",
-        image: gameWwe2k,
-    },
-];
+// Select specific featured games by ID or Slug
+const FEATURED_IDs = [104, 105, 106, 107]; // GOW3, RE6, TR, Uncharted 3
+const games = ALL_GAMES.filter(g => FEATURED_IDs.includes(g.id));
 
 const FeaturedGamesSection = () => {
     return (
-        <section className="relative py-24">
+        <section className="relative section-container py-24">
             {/* Section header */}
-            <div className="section-container mb-12">
+            <div className="mb-12">
                 <h2 className="heading-section text-foreground mb-4">
                     Featured <span className="gradient-text-cyan">Benchmarks</span>
                 </h2>
@@ -55,11 +22,12 @@ const FeaturedGamesSection = () => {
             </div>
 
             {/* Game strips */}
-            <div className="space-y-2">
+            <div className="space-y-4">
                 {games.map((game, index) => (
-                    <div
+                    <Link
+                        href={`/games/${game.slug}`}
                         key={game.id}
-                        className="game-strip group cursor-pointer"
+                        className="game-strip group cursor-pointer block relative h-[280px] md:h-[180px] overflow-hidden rounded-3xl border border-border/20 hover:border-primary/50"
                         style={{ animationDelay: `${index * 100}ms` }}
                     >
                         {/* Background image */}
@@ -68,49 +36,56 @@ const FeaturedGamesSection = () => {
                             alt={game.name}
                             className="game-strip-image object-cover"
                             fill
+                            quality={90}
                         />
 
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/40 z-[1]" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/40 z-[1]" />
+                        {/* Stronger Gradient overlay for text readability */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-[1]" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-[1]" />
 
                         {/* Content */}
-                        <div className="relative z-10 section-container py-10 md:py-16">
-                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-10">
+                            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+
                                 {/* Game info */}
-                                <div>
-                                    <h3 className="heading-subsection text-foreground mb-3 group-hover:text-primary transition-colors">
+                                <div className="space-y-3 max-w-2xl">
+                                    <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight group-hover:text-primary transition-colors drop-shadow-lg">
                                         {game.name}
                                     </h3>
-                                    <div className="flex flex-wrap items-center gap-3 text-sm md:text-base">
-                                        <span className="chip-badge">{game.emulator}</span>
-                                        <span className="text-muted-foreground">•</span>
-                                        <span className="text-mono text-primary font-medium">{game.chip}</span>
-                                        <span className="text-muted-foreground">•</span>
-                                        <span className="text-mono fps-display font-bold">{game.fps} FPS</span>
+
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-white">
+                                            {game.emulator}
+                                        </span>
+                                        <span className="px-3 py-1 rounded-full bg-blue-500/20 backdrop-blur-md border border-blue-500/30 text-xs font-bold uppercase tracking-wider text-blue-300 flex items-center gap-1.5">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                                            {game.chip}
+                                        </span>
+                                        <span className="px-3 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-500/30 text-xs font-mono font-bold text-emerald-400">
+                                            {game.fps} FPS
+                                        </span>
                                     </div>
                                 </div>
 
                                 {/* CTA */}
-                                <div className="flex items-center gap-2 text-muted-foreground group-hover:text-primary transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0">
-                                    <span className="font-medium">View Performance</span>
-                                    <ArrowRight className="w-5 h-5" />
+                                <div className="flex items-center gap-3 text-white/50 group-hover:text-primary transition-all group-hover:translate-x-2">
+                                    <span className="text-sm font-medium uppercase tracking-widest hidden md:block">View Performance</span>
+                                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10">
+                                        <ArrowRight className="w-5 h-5" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        {/* Bottom border glow on hover */}
-                        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                    </div>
+                    </Link>
                 ))}
             </div>
 
             {/* View all CTA */}
             <div className="section-container mt-12 text-center">
-                <button className="cta-secondary group">
+                <Link href="/games" className="cta-secondary group inline-flex items-center">
                     View All Games
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                </button>
+                </Link>
             </div>
         </section>
     );

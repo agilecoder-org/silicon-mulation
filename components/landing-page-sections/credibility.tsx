@@ -110,7 +110,7 @@ const CredibilitySection = () => {
 
                         <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm">
                             <Link
-                                href="/videos"
+                                href="/community"
                                 className="text-primary hover:text-primary/80 transition-colors font-medium"
                             >
                                 Watch Test Videos

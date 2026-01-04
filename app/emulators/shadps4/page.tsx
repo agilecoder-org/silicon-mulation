@@ -7,8 +7,8 @@ import { BackButton } from "@/components/ui/back-button";
 
 export default function ShadPS4Page() {
     return (
-        <div className="min-h-screen pt-32 pb-20">
-            <div className="section-container max-w-4xl mx-auto">
+        <div className="min-h-screen pt-32 pb-20 px-6">
+            <div className="max-w-6xl mx-auto">
                 <BackButton href="/emulation" label="Back to Emulation" />
 
                 <div className="relative rounded-3xl overflow-hidden bg-zinc-900/30 border border-zinc-800/50 p-8 md:p-12 mb-16">

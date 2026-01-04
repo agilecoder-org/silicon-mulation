@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
+import Link from "next/link"
 
 export default function Hero() {
     const [mouse, setMouse] = useState({ x: 0, y: 0 })
@@ -77,7 +78,7 @@ export default function Hero() {
                         asChild
                         className="bg-foreground text-background hover:bg-primary transition-colors font-semibold uppercase tracking-wide px-10 h-13 text-base"
                     >
-                        <a href="/games">Explore Games</a>
+                        <Link href="/games">Explore Games</Link>
                     </Button>
 
                     <Button
@@ -86,7 +87,7 @@ export default function Hero() {
                         asChild
                         className="border-foreground/30 hover:border-accent hover:text-black transition-colors font-semibold uppercase tracking-wide px-10 h-13 text-base bg-transparent"
                     >
-                        <a href="/emulators">Browse Emulators</a>
+                        <Link href="/emulation">Browse Emulators</Link>
                     </Button>
                 </div>
             </div>

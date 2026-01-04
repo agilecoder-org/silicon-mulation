@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 // Emulator Imports
 import mesenLogo from "@/assets/emulators/mesen.png";
@@ -21,6 +22,7 @@ import ps3Console from "@/assets/consoles/ps3-slim.png";
 const emulators = [
     {
         name: "RPCS3",
+        slug: "rpcs3",
         platform: "PlayStation 3",
         image: rpcs3Logo,
         status: "Demanding",
@@ -28,6 +30,7 @@ const emulators = [
     },
     {
         name: "PCSX2",
+        slug: "pcsx2",
         platform: "PlayStation 2",
         image: pcsx2Logo,
         status: "Stable",
@@ -35,6 +38,7 @@ const emulators = [
     },
     {
         name: "shadPS4",
+        slug: "shadps4",
         platform: "PlayStation 4",
         image: shadps4Logo,
         status: "Experimental",
@@ -42,6 +46,7 @@ const emulators = [
     },
     {
         name: "PPSSPP",
+        slug: "ppsspp",
         platform: "PSP",
         image: ppssppLogo,
         status: "Excellent",
@@ -49,6 +54,7 @@ const emulators = [
     },
     {
         name: "RetroArch",
+        slug: "retroarch",
         platform: "Multi-System",
         image: retroArchLogo,
         status: "Flexible",
@@ -56,6 +62,7 @@ const emulators = [
     },
     {
         name: "Mesen",
+        slug: "mesen",
         platform: "NES / SNES",
         image: mesenLogo,
         status: "Perfect",
@@ -86,9 +93,10 @@ export default function EmulatorsConsolesSection() {
                 <div className="max-w-5xl mx-auto mb-40">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {emulators.map((emulator) => (
-                            <div
+                            <Link
+                                href={`/emulators/${emulator.slug}`}
                                 key={emulator.name}
-                                className="group p-7 rounded-2xl border border-border/40 bg-card/40 hover:bg-card/60 hover:border-primary/20 transition-all"
+                                className="group p-7 rounded-2xl border border-border/40 bg-card/40 hover:bg-card/60 hover:border-primary/20 transition-all cursor-pointer block"
                             >
                                 <div className="flex items-start gap-5 mb-6">
                                     <div className="relative w-16 h-16 rounded-xl bg-muted/30 p-2 border border-white/5 group-hover:border-primary/20 transition-colors">
@@ -112,10 +120,10 @@ export default function EmulatorsConsolesSection() {
                                 <div className="flex items-start justify-between gap-4 text-sm">
                                     <span
                                         className={`px-2 py-0.5 rounded-md text-xs font-medium border ${emulator.status === "Experimental"
-                                                ? "border-orange-500/20 text-orange-400 bg-orange-500/10"
-                                                : emulator.status === "Demanding"
-                                                    ? "border-red-500/20 text-red-400 bg-red-500/10"
-                                                    : "border-emerald-500/20 text-emerald-400 bg-emerald-500/10"
+                                            ? "border-orange-500/20 text-orange-400 bg-orange-500/10"
+                                            : emulator.status === "Demanding"
+                                                ? "border-red-500/20 text-red-400 bg-red-500/10"
+                                                : "border-emerald-500/20 text-emerald-400 bg-emerald-500/10"
                                             }`}
                                     >
                                         {emulator.status}
@@ -125,7 +133,7 @@ export default function EmulatorsConsolesSection() {
                                         {emulator.note}
                                     </span>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -162,10 +170,10 @@ export default function EmulatorsConsolesSection() {
 
                 {/* CTA */}
                 <div className="text-center">
-                    <button className="cta-secondary group">
+                    <Link href="/games" className="cta-secondary group inline-flex items-center">
                         View Compatibility List
                         <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

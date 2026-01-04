@@ -1,4 +1,5 @@
 import { Users, FileText, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const CommunitySection = () => {
     return (
@@ -18,10 +19,10 @@ const CommunitySection = () => {
                                 Our benchmarks come from real Mac users testing games on their own hardware.
                                 Join the community and contribute your results.
                             </p>
-                            <a href="#" className="inline-flex items-center text-primary hover:underline group/link">
+                            <Link href="/community" className="inline-flex items-center text-primary hover:underline group/link">
                                 Join the Community
                                 <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover/link:translate-x-1" />
-                            </a>
+                            </Link>
                         </div>
 
                         {/* Deep Dives */}
@@ -36,10 +37,10 @@ const CommunitySection = () => {
                                 Technical breakdowns of Apple Silicon architecture, Metal API performance,
                                 and emulator optimization techniques.
                             </p>
-                            <a href="#" className="inline-flex items-center text-accent hover:underline group/link">
+                            <Link href="/blogs" className="inline-flex items-center text-accent hover:underline group/link">
                                 Read Articles
                                 <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover/link:translate-x-1" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

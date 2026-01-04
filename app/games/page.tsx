@@ -1,103 +1,13 @@
 "use client";
 
+import { ALL_GAMES } from "@/lib/games-data";
 import { useState, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Search, Filter, Check, Monitor, Gamepad2, Activity } from "lucide-react";
-import { GAME_STATUSES, GameStatus, GameDetail } from "@/lib/emulators-data";
+import { GAME_STATUSES, GameStatus } from "@/lib/emulators-data";
 import { MultiSelect } from "@/components/ui/multi-select";
 import { Badge } from "@/components/ui/badge";
-
-import gameGow1 from "@/assets/games/gow1.jpg";
-import gameGow2 from "@/assets/games/gow2.jpg";
-import gameGow3 from "@/assets/games/gow3-cover.jpg";
-import gameGowAscension from "@/assets/games/gow-ascension.jpg";
-import gameRe6 from "@/assets/games/resident-evil-6.jpg";
-import gameTombRaider2013 from "@/assets/games/tomb-raider.jpeg";
-import gameUncharted3 from "@/assets/games/uncharted-3.jpeg";
-import gameDemonSouls from "@/assets/games/demon-souls.jpg";
-
-const ALL_GAMES: GameDetail[] = [
-    {
-        id: 101,
-        name: "God of War I (HD Remastered)",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "60",
-        status: "Excellent",
-        image: gameGow1,
-        genre: "Action"
-    },
-    {
-        id: 102,
-        name: "God of War II (HD Remastered)",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "60",
-        status: "Excellent",
-        image: gameGow2,
-        genre: "Action"
-    },
-    {
-        id: 103,
-        name: "God of War: Ascension",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "30-50",
-        status: "Excellent",
-        image: gameGowAscension,
-        genre: "Action"
-    },
-    {
-        id: 104,
-        name: "God of War III",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "30-60",
-        status: "Playable",
-        image: gameGow3,
-        genre: "Action"
-    },
-    {
-        id: 105,
-        name: "Resident Evil 6",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "45–60",
-        status: "Playable",
-        image: gameRe6,
-        genre: "Horror"
-    },
-    {
-        id: 106,
-        name: "Tomb Raider",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "45-60",
-        status: "Playable",
-        image: gameTombRaider2013,
-        genre: "Adventure"
-    },
-    {
-        id: 107,
-        name: "Uncharted 3",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "30",
-        status: "Playable",
-        image: gameUncharted3,
-        genre: "Action Adventure"
-    },
-    {
-        id: 108,
-        name: "Demon's Souls",
-        emulator: "RPCS3",
-        chip: "M4 Pro",
-        fps: "N/A",
-        status: "Not Playable",
-        image: gameDemonSouls,
-        genre: "RPG"
-    }
-];
 
 const ALL_EMULATORS = [
     "RPCS3",
@@ -303,7 +213,8 @@ export default function GamesPage() {
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {filteredGames.map((game) => (
-                                    <div
+                                    <Link
+                                        href={`/games/${game.slug}`}
                                         key={game.id}
                                         className="group relative rounded-2xl overflow-hidden border border-border/40 bg-card/40 hover:bg-card/60 transition-all hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 flex flex-col h-full"
                                     >
@@ -360,7 +271,7 @@ export default function GamesPage() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
                         )}

@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
 import Navigation from "@/components/landing-page-sections/Navigation";
 import Footer from "@/components/landing-page-sections/footer";
+import FloatingControls from "@/components/ui/floating-controls";
 
 // ... imports
 
@@ -44,6 +45,8 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
+
+          <FloatingControls />
 
           <Footer />
         </div>

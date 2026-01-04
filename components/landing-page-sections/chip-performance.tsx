@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Cpu, Zap, Thermometer, Monitor } from "lucide-react";
+import Link from "next/link";
 
 const chips = [
     { name: "M1", variant: "Air" },
@@ -70,8 +71,8 @@ export default function ChipPerformanceSection() {
                             key={chip.name}
                             onClick={() => setActive(index)}
                             className={`px-5 py-2 rounded-full text-sm font-medium transition ${active === index
-                                    ? "bg-foreground text-background"
-                                    : "border border-border/50 text-muted-foreground hover:text-foreground"
+                                ? "bg-foreground text-background"
+                                : "border border-border/50 text-muted-foreground hover:text-foreground"
                                 }`}
                         >
                             {chip.name} {chip.variant}
@@ -101,12 +102,12 @@ export default function ChipPerformanceSection() {
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
-                    <button className="cta-secondary">
+                    <Link href="/games" className="cta-secondary">
                         Explore Tested Games
-                    </button>
-                    <button className="cta-secondary">
+                    </Link>
+                    <Link href="/emulation" className="cta-secondary">
                         See Emulator Support
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>
