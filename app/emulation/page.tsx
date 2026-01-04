@@ -113,15 +113,12 @@ export default function EmulationPage() {
             <div className="section-container">
 
                 {/* Hero */}
-                <div className="text-center mb-24">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-6">
-                        <BookOpen className="w-4 h-4" />
-                        <span>Knowledge Base</span>
-                    </div>
-                    <h1 className="heading-section mb-6">
+                <div className="mb-24 space-y-4">
+                    <h1 className="heading-section">
                         Core <span className="text-primary">Concepts</span>
                     </h1>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+
+                    <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
                         Understanding how your Mac translates foreign code is the first step to optimization.
                     </p>
                 </div>

@@ -1,18 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, Download, ExternalLink, Cpu, Construction, Gamepad2, Tv, Youtube, Play } from "lucide-react";
+import { ExternalLink, Download, Layers, Gamepad, Settings, Gamepad2, Tv, Youtube, Play, Construction } from "lucide-react";
 import retroArchLogo from "@/assets/emulators/retro-arch.png";
+import { BackButton } from "@/components/ui/back-button";
 
 export default function RetroArchPage() {
     return (
         <div className="min-h-screen bg-[#09090b] text-zinc-100 pt-24 pb-24 px-6 selection:bg-zinc-500/30">
             <div className="max-w-6xl mx-auto">
-                <Link href="/emulation" className="group inline-flex items-center text-sm text-zinc-500 hover:text-white mb-12 transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                    Back to Hub
-                </Link>
+                <BackButton href="/emulation" label="Back to Hub" />
 
                 <div className="relative rounded-3xl overflow-hidden bg-zinc-900/30 border border-zinc-800/50 p-8 md:p-12 mb-16">
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />

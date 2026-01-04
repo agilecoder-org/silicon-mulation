@@ -176,19 +176,19 @@
     --popover: 240 8% 6%;
     --popover-foreground: 210 20% 95%;
 
-    /* Neon cyan - Apple Silicon inspired */
-    --primary: 180 100% 50%;
+    /* Neon cyan - Apple Silicon inspired (Softened) */
+    --primary: 190 90% 60%;
     --primary-foreground: 240 10% 4%;
 
     /* Warm performance orange */
-    --secondary: 25 100% 55%;
+    --secondary: 25 90% 60%;
     --secondary-foreground: 240 10% 4%;
 
     --muted: 240 6% 12%;
-    --muted-foreground: 215 15% 55%;
+    --muted-foreground: 215 15% 65%;
 
-    /* Accent - electric green */
-    --accent: 150 100% 45%;
+    /* Accent - electric green (Softened) */
+    --accent: 150 80% 50%;
     --accent-foreground: 240 10% 4%;
 
     --destructive: 0 72% 51%;
@@ -196,14 +196,14 @@
 
     --border: 240 6% 15%;
     --input: 240 6% 15%;
-    --ring: 180 100% 50%;
+    --ring: 190 90% 60%;
 
     --radius: 0.5rem;
 
     /* Custom tokens */
-    --glow-cyan: 180 100% 50%;
-    --glow-green: 150 100% 45%;
-    --glow-orange: 25 100% 55%;
+    --glow-cyan: 190 90% 60%;
+    --glow-green: 150 80% 50%;
+    --glow-orange: 25 90% 60%;
     --surface-dark: 240 10% 5%;
     --surface-darker: 240 12% 3%;
     --text-primary: 210 20% 98%;
@@ -257,21 +257,22 @@
 
   /* Typography */
   .heading-hero {
-    @apply text-5xl font-bold tracking-tight;
+    @apply text-7xl font-bold tracking-tight;
     font-family: var(--font-sans);
     font-weight: 700;
-    line-height: 0.95;
+    line-height: 0.9;
   }
 
   @screen md {
     .heading-hero {
-      @apply text-7xl;
+      @apply text-9xl;
     }
   }
 
   @screen lg {
     .heading-hero {
-      @apply text-8xl;
+      @apply text-[15rem];
+      line-height: 0.8;
     }
   }
 
@@ -468,7 +469,7 @@
 
   /* Gradient text */
   .gradient-text-cyan {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(210, 80%, 70%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

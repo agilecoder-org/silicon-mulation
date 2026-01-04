@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, Download, ExternalLink, Cpu, Construction, Terminal, FileDown, Youtube, Play } from "lucide-react";
+import { ExternalLink, Download, Monitor, Cpu, Settings, AlertTriangle, Terminal, FileDown, Youtube, Play, Construction } from "lucide-react";
 import rpcs3Logo from "@/assets/emulators/rpcs3.png";
+import { BackButton } from "@/components/ui/back-button";
 
 export default function RPCS3Page() {
     return (
@@ -11,10 +11,7 @@ export default function RPCS3Page() {
             <div className="max-w-6xl mx-auto">
 
                 {/* Back Link */}
-                <Link href="/emulation" className="group inline-flex items-center text-sm text-zinc-500 hover:text-cyan-400 mb-12 transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                    Back to Hub
-                </Link>
+                <BackButton href="/emulation" label="Back to Hub" />
 
                 {/* Hero Section */}
                 <div className="relative rounded-3xl overflow-hidden bg-zinc-900/30 border border-zinc-800/50 p-8 md:p-12 mb-16">

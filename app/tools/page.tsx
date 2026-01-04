@@ -92,7 +92,9 @@ export default function ToolsPage() {
 
                 {/* Header */}
                 <div className="space-y-4">
-                    <h1 className="heading-section">Emulation Tools</h1>
+                    <h1 className="heading-section">
+                        Emulation <span className="text-primary">Tools</span>
+                    </h1>
                     <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
                         Utilities to help you set up, debug, and optimize your emulation experience on Apple Silicon.
                     </p>

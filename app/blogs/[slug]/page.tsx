@@ -3,9 +3,10 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
-import { ArrowLeft, Calendar, User, Clock, Share2 } from "lucide-react";
+import { Calendar, User, Clock, Share2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { BackButton } from "@/components/ui/back-button";
 import { cn } from "@/lib/utils";
 
 // Revalidate every hour
@@ -59,13 +60,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     />
                 )}
 
-                <div className="section-container relative z-10 max-w-4xl mx-auto text-center">
-                    <Link href="/blogs" className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8 text-sm font-medium">
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        Back to Articles
-                    </Link>
+                <div className="section-container relative z-10 max-w-4xl mx-auto text-left">
+                    <BackButton href="/blogs" label="Back to Articles" />
 
-                    <div className="flex items-center justify-center gap-2 mb-6">
+                    <div className="flex items-center justify-start gap-2 mb-6">
                         <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
                             {post.category}
                         </Badge>
@@ -75,7 +73,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         {post.title}
                     </h1>
 
-                    <div className="flex flex-wrap items-center justify-center gap-6 text-muted-foreground text-sm md:text-base font-medium">
+                    <div className="flex flex-wrap items-center justify-start gap-6 text-muted-foreground text-sm md:text-base font-medium">
                         <div className="flex items-center gap-2">
                             <User className="w-4 h-4" />
                             {post.author}

@@ -1,18 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, Download, ExternalLink, Cpu, Construction, Box, Youtube, Play } from "lucide-react";
+import { ExternalLink, Download, Layers, Monitor, Settings, Box, Youtube, Play, Cpu, Construction } from "lucide-react";
+import { BackButton } from "@/components/ui/back-button";
 import mesenLogo from "@/assets/emulators/mesen.png";
 
 export default function MesenPage() {
     return (
-        <div className="min-h-screen bg-[#09090b] text-zinc-100 pt-24 pb-24 selection:bg-cyan-500/30">
-            <div className="section-container">
-                <Link href="/emulation" className="group inline-flex items-center text-sm text-zinc-500 hover:text-cyan-400 mb-12 transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                    Back to Hub
-                </Link>
+        <div className="min-h-screen bg-[#09090b] text-zinc-100 pt-32 pb-20 selection:bg-cyan-500/30">
+            <div className="section-container max-w-4xl mx-auto">
+                <BackButton href="/emulation" label="Back to Hub" />
 
                 <div className="relative rounded-3xl overflow-hidden bg-zinc-900/30 border border-zinc-800/50 p-8 md:p-12 mb-16">
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />

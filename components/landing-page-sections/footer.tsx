@@ -1,4 +1,5 @@
 import { Youtube } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -15,16 +16,22 @@ const Footer = () => {
 
                     {/* Links */}
                     <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-                        <a href="/games" className="hover:text-foreground transition-colors">Games</a>
-                        <a href="/emulators" className="hover:text-foreground transition-colors">Emulators</a>
-                        <a href="/benchmarks" className="hover:text-foreground transition-colors">Benchmarks</a>
-                        <a href="/tools" className="hover:text-foreground transition-colors">Tools</a>
-                        <a href="/about" className="hover:text-foreground transition-colors">About</a>
+                        <Link href="/games" className="hover:text-foreground transition-colors">Games</Link>
+                        <Link href="/emulators" className="hover:text-foreground transition-colors">Emulators</Link>
+                        <Link href="/benchmarks" className="hover:text-foreground transition-colors">Benchmarks</Link>
+                        <Link href="/tools" className="hover:text-foreground transition-colors">Tools</Link>
+                        <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
                     </div>
 
                     {/* Social */}
                     <div className="flex items-center gap-4">
-                        <a href="https://www.youtube.com/@m-ulation" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+                        <a
+                            href="https://www.youtube.com/@m-ulation"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                            aria-label="Visit Silicon M-ulation on YouTube"
+                        >
                             <Youtube className="w-5 h-5" />
                         </a>
                     </div>

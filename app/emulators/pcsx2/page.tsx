@@ -1,18 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, Download, ExternalLink, Cpu, Construction, Disc, Youtube, Play } from "lucide-react";
+import { ExternalLink, Download, Monitor, Cpu, Settings, Construction, Disc, Youtube, Play } from "lucide-react";
 import pcsx2Logo from "@/assets/emulators/pcsx2.png";
+import { BackButton } from "@/components/ui/back-button";
 
 export default function PCSX2Page() {
     return (
-        <div className="min-h-screen bg-[#09090b] text-zinc-100 pt-24 pb-24 px-6 selection:bg-blue-500/30">
+        <div className="min-h-screen bg-[#09090b] text-zinc-100 pt-32 pb-20 px-6 selection:bg-blue-500/30">
             <div className="max-w-6xl mx-auto">
-                <Link href="/emulation" className="group inline-flex items-center text-sm text-zinc-500 hover:text-blue-400 mb-12 transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                    Back to Hub
-                </Link>
+                <BackButton href="/emulation" label="Back to Hub" />
 
                 {/* Hero */}
                 <div className="relative rounded-3xl overflow-hidden bg-zinc-900/30 border border-zinc-800/50 p-8 md:p-12 mb-16">

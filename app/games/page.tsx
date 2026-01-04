@@ -150,7 +150,9 @@ export default function GamesPage() {
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                     <div className="space-y-4">
-                        <h1 className="heading-section">Tested Games</h1>
+                        <h1 className="heading-section">
+                            Tested <span className="text-primary">Games</span>
+                        </h1>
                         <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
                             Explore performance reports from the community on Macintosh Silicon.
                             Filter by device, emulator, and playability status.
