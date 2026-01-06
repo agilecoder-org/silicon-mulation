@@ -15,13 +15,13 @@ export default function PCSX2Page() {
                 <div className="relative rounded-3xl overflow-hidden bg-zinc-900/30 border border-zinc-800/50 p-8 md:p-12 mb-16">
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
-                    <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left">
+                    <div className="relative z-10 flex flex-col md:flex-row gap-10 items-start text-left">
                         <div className="w-32 h-32 md:w-40 md:h-40 bg-zinc-950 rounded-3xl p-6 border border-zinc-800 shadow-2xl shadow-black/50 flex-shrink-0 flex items-center justify-center">
                             <Image src={pcsx2Logo} alt="PCSX2" className="w-full h-full object-contain" />
                         </div>
                         <div className="flex-1 space-y-6">
                             <div>
-                                <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
+                                <div className="flex items-center justify-start gap-4 mb-2">
                                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">PCSX2</h1>
                                     <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400">
                                         Stable
@@ -34,12 +34,12 @@ export default function PCSX2Page() {
                                 A mature emulator that runs flawlessly on almost all Apple Silicon chips. The native <span className="text-blue-400">Metal renderer</span> ensures high efficiency and minimal graphical glitches.
                             </p>
 
-                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
-                                <a href="https://pcsx2.net/downloads" target="_blank" className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2">
+                            <div className="flex flex-wrap items-center justify-start gap-4 pt-2">
+                                <a href="https://pcsx2.net/downloads" target="_blank" className="w-full sm:w-auto justify-center bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2">
                                     <Download className="w-5 h-5" />
                                     Download Nightly
                                 </a>
-                                <a href="https://pcsx2.net" target="_blank" className="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all border border-zinc-700 flex items-center gap-2">
+                                <a href="https://pcsx2.net" target="_blank" className="w-full sm:w-auto justify-center bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all border border-zinc-700 flex items-center gap-2">
                                     <ExternalLink className="w-5 h-5" />
                                     Official Site
                                 </a>

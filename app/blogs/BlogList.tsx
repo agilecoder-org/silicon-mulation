@@ -67,7 +67,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
             </div>
 
             {/* Controls Section */}
-            <div className="sticky top-20 z-30 bg-background/80 backdrop-blur-xl py-4 mb-10 -mx-6 px-6 md:mx-0 md:px-0 border-b border-border/40 md:border-none md:bg-transparent md:static">
+            <div className="sticky top-16 z-30 bg-background/80 backdrop-blur-xl py-4 mb-10 -mx-6 px-6 md:mx-0 md:px-0 border-b border-border/40 md:border-none md:bg-transparent md:static">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
 
                     {/* Category Pills */}

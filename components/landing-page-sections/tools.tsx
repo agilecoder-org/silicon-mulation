@@ -17,7 +17,7 @@ const MacVisualization = () => {
 
     return (
         <div className="relative order-2 lg:order-1">
-            <div className="relative aspect-square max-w-md mx-auto">
+            <div className="relative aspect-square max-w-md mx-auto scale-90 md:scale-100">
                 {/* Animated concentric rings */}
                 <div className="absolute inset-8 rounded-full border border-primary/20 animate-pulse-slow" />
                 <div
@@ -61,7 +61,7 @@ const MacVisualization = () => {
                     return (
                         <div
                             key={index}
-                            className={`absolute ${metric.position} animate-float`}
+                            className={`hidden md:block absolute ${metric.position} animate-float`}
                             style={{ animationDelay: metric.delay }}
                         >
                             <div className="chip-badge-glow bg-card/80 backdrop-blur-sm border border-primary/30 rounded-lg p-3 flex items-center gap-2 hover:border-primary/60 transition-colors shadow-lg">

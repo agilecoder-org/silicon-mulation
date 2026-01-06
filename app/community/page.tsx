@@ -36,28 +36,20 @@ export default async function CommunityPage() {
                 </div>
 
                 {/* Compact Social Links */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                    <a href="#" className="group p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5 hover:bg-indigo-500/10 transition-all hover:scale-[1.02] flex items-center justify-center gap-3">
-                        <MessageSquare className="w-5 h-5 text-indigo-500" />
-                        <span className="font-semibold text-foreground text-sm">Discord</span>
-                    </a>
-                    <a href="#" className="group p-4 rounded-xl border border-border/40 bg-card/50 hover:bg-card/80 transition-all hover:scale-[1.02] flex items-center justify-center gap-3">
-                        <Github className="w-5 h-5 text-foreground" />
-                        <span className="font-semibold text-foreground text-sm">GitHub</span>
-                    </a>
-                    <a href="#" className="group p-4 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 transition-all hover:scale-[1.02] flex items-center justify-center gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+                    <a href="https://youtube.com/@m-ulation" target="_blank" rel="noopener noreferrer" className="group p-4 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 transition-all hover:scale-[1.02] flex items-center justify-center gap-3">
                         <Youtube className="w-5 h-5 text-red-500" />
-                        <span className="font-semibold text-foreground text-sm">YouTube</span>
+                        <span className="font-semibold text-foreground text-sm">Silicon M-ulation</span>
                     </a>
-                    <a href="#" className="group p-4 rounded-xl border border-sky-500/20 bg-sky-500/5 hover:bg-sky-500/10 transition-all hover:scale-[1.02] flex items-center justify-center gap-3">
-                        <Twitter className="w-5 h-5 text-sky-500" />
-                        <span className="font-semibold text-foreground text-sm">Twitter</span>
+                    <a href="https://youtube.com/@AgileCoderYT" target="_blank" rel="noopener noreferrer" className="group p-4 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 transition-all hover:scale-[1.02] flex items-center justify-center gap-3">
+                        <Youtube className="w-5 h-5 text-red-500" />
+                        <span className="font-semibold text-foreground text-sm">Tech & Programming</span>
                     </a>
                 </div>
 
                 {/* Forum Section */}
                 <div className="border-t border-border/50 pt-12">
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                             <div>
                                 <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
@@ -91,17 +83,17 @@ export default async function CommunityPage() {
 
                                     <div className="flex justify-between items-start gap-4">
                                         <div className="flex-1">
-                                            <h3 className="text-lg font-medium group-hover:text-primary transition-colors mb-2 line-clamp-1">
+                                            <h3 className="text-lg font-medium group-hover:text-primary transition-colors mb-3">
                                                 {topic.title}
                                             </h3>
-                                            <div className="flex items-center gap-4 text-xs text-muted-foreground/80">
+                                            <div className="flex items-center gap-4 text-xs text-muted-foreground/80 flex-wrap">
                                                 <div className="flex items-center gap-1.5">
                                                     <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
                                                         {topic.authorName?.[0]?.toUpperCase() || 'A'}
                                                     </div>
                                                     <span className="font-medium text-foreground/80">{topic.authorName}</span>
                                                 </div>
-                                                <span className="w-1 h-1 rounded-full bg-border" />
+                                                <span className="hidden sm:block w-1 h-1 rounded-full bg-border" />
                                                 <div className="flex items-center gap-1.5">
                                                     <Clock className="w-3.5 h-3.5" />
                                                     {new Date(topic.publishedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}

@@ -158,13 +158,23 @@ export default function EmulatorsConsolesSection() {
                     <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-40" />
 
                     {/* Lineage layout */}
-                    <div className="overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 md:pb-0 scrollbar-hide">
-                        <div className="relative flex items-end gap-8 md:gap-24 min-w-max">
+                    <div className="md:overflow-x-visible">
+                        {/* Mobile: Grid Layout (Single Column) */}
+                        <div className="flex flex-col gap-12 md:hidden px-4 items-center">
                             <ConsoleItem image={ps3Console} label="PlayStation 3" width={280} z="z-30" />
-                            <ConsoleItem image={ps2Console} label="PlayStation 2" width={220} z="z-20" offset />
-                            <ConsoleItem image={ps1Console} label="PlayStation 1" width={180} z="z-10" offset />
-                            <ConsoleItem image={nesConsole} label="NES" width={160} z="z-0" offset />
-                            <ConsoleItem image={gbaConsole} label="Game Boy Advance" width={120} z="z-0" offset />
+                            <ConsoleItem image={ps2Console} label="PlayStation 2" width={220} z="z-20" />
+                            <ConsoleItem image={ps1Console} label="PlayStation 1" width={180} z="z-10" />
+                            <ConsoleItem image={nesConsole} label="NES" width={160} z="z-0" />
+                            <ConsoleItem image={gbaConsole} label="GBA" width={120} z="z-0" />
+                        </div>
+
+                        {/* Desktop: Overlapping Lineage */}
+                        <div className="hidden md:flex relative items-end justify-center min-w-max">
+                            <ConsoleItem image={ps3Console} label="PlayStation 3" width={280} z="z-30" desktopMode />
+                            <ConsoleItem image={ps2Console} label="PlayStation 2" width={220} z="z-20" offset desktopMode />
+                            <ConsoleItem image={ps1Console} label="PlayStation 1" width={180} z="z-10" offset desktopMode />
+                            <ConsoleItem image={nesConsole} label="NES" width={160} z="z-0" offset desktopMode />
+                            <ConsoleItem image={gbaConsole} label="Game Boy Advance" width={120} z="z-0" offset desktopMode />
                         </div>
                     </div>
                 </div>
@@ -188,22 +198,24 @@ function ConsoleItem({
     width,
     z,
     offset,
+    desktopMode
 }: {
     image: any;
     label: string;
     width: number;
     z: string;
     offset?: boolean;
+    desktopMode?: boolean;
 }) {
     return (
-        <div className={`relative ${z} ${offset ? "-ml-16" : ""}`}>
+        <div className={`relative ${z} ${desktopMode && offset ? "-ml-16" : ""} flex flex-col items-center`}>
             <Image
                 src={image}
                 alt={label}
                 width={width}
-                className="drop-shadow-2xl opacity-90"
+                className="drop-shadow-2xl opacity-90 w-full h-auto object-contain max-h-[160px] md:max-h-none"
             />
-            <div className="mt-4 text-xs font-mono uppercase tracking-widest text-primary opacity-80">
+            <div className="mt-4 text-xs font-mono uppercase tracking-widest text-primary opacity-80 text-center">
                 {label}
             </div>
         </div>

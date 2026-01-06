@@ -18,13 +18,13 @@ export default function RPCS3Page() {
                     {/* Background Gradient */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
-                    <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left">
+                    <div className="relative z-10 flex flex-col md:flex-row gap-10 items-start text-left">
                         <div className="w-32 h-32 md:w-40 md:h-40 bg-zinc-950 rounded-3xl p-6 border border-zinc-800 shadow-2xl shadow-black/50 flex-shrink-0 flex items-center justify-center">
                             <Image src={rpcs3Logo} alt="RPCS3" className="w-full h-full object-contain" />
                         </div>
                         <div className="flex-1 space-y-6">
                             <div>
-                                <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
+                                <div className="flex items-center justify-start gap-4 mb-2">
                                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">RPCS3</h1>
                                     <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400">
                                         Demanding
@@ -37,12 +37,12 @@ export default function RPCS3Page() {
                                 The world's first open-source Sony PlayStation 3 emulator. On macOS, it relies on <span className="text-cyan-400">MoltenVK</span> to translate Vulkan to Metal, enabling hardware-accelerated emulation even on Apple Silicon.
                             </p>
 
-                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
-                                <a href="https://rpcs3.net/download" target="_blank" className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/20 flex items-center gap-2">
+                            <div className="flex flex-wrap items-center justify-start gap-4 pt-2">
+                                <a href="https://rpcs3.net/download" target="_blank" className="w-full sm:w-auto justify-center bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/20 flex items-center gap-2">
                                     <Download className="w-5 h-5" />
                                     Download for Mac
                                 </a>
-                                <a href="https://www.playstation.com/en-us/support/hardware/ps3/system-software/" target="_blank" className="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all border border-zinc-700 flex items-center gap-2">
+                                <a href="https://www.playstation.com/en-us/support/hardware/ps3/system-software/" target="_blank" className="w-full sm:w-auto justify-center bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all border border-zinc-700 flex items-center gap-2">
                                     <FileDown className="w-5 h-5" />
                                     Get Firmware (PUP)
                                 </a>
