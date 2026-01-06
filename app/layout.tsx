@@ -76,6 +76,8 @@ export default function RootLayout({
             gtag('config', 'G-JV9N5QE57F');
           `}
         </Script>
+
+        <meta name="google-site-verification" content="BnZGvfq4s8A-441A4gCFBZ_vDVRby0kZFDAETf9PYTU" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
