@@ -13,10 +13,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Silicon M-ulation | Mac Gaming & Emulation Reference",
-  description: "The definitive reference for gaming & emulation on Apple Silicon (macOS).",
+  title: {
+    default: "Silicon M-ulation | Mac Gaming & Emulation Reference",
+    template: "%s | Silicon M-ulation"
+  },
+  description: "The definitive reference for gaming & emulation on Apple Silicon (macOS). Optimized configs, compatibility lists, and performance guides for M1, M2, M3 & M4 chips.",
   icons: {
-    icon: "/assets/logo.png",
+    icon: "/favicon.ico",
+  },
+  keywords: ["Apple Silicon", "Mac Gaming", "Emulation", "M1", "M2", "M3", "M4", "Game Porting Toolkit", "Ryujinx", "RPCS3", "PCSX2"],
+  openGraph: {
+    title: "Silicon M-ulation",
+    description: "The definitive reference for gaming & emulation on Apple Silicon.",
+    url: "https://silicon-mulation.vercel.app",
+    siteName: "Silicon M-ulation",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Silicon M-ulation",
+    description: "Mac Gaming & Emulation Reference for Apple Silicon.",
+    creator: "@AgileCoderYT",
   },
 };
 
