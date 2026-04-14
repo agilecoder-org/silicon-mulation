@@ -1,7 +1,7 @@
 "use client";
 
-import { Layers, Zap, Scale, Cpu, BookOpen, AlertTriangle, Download, ExternalLink, CheckCircle, Terminal, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { Gamepad2, Star } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 // Emulator Logos
@@ -12,254 +12,185 @@ import retroArchLogo from "@/assets/emulators/retro-arch.png";
 import rpcs3Logo from "@/assets/emulators/rpcs3.png";
 import shadps4Logo from "@/assets/emulators/shadps4.png";
 
-const EMULATORS = [
-    {
-        name: "RPCS3",
-        slug: "rpcs3",
-        platform: "PlayStation 3",
-        image: rpcs3Logo,
-        status: "Demanding",
-        version: "v0.0.32-15600",
-        lastUpdated: "2 days ago",
-        description: "The first open-source PS3 emulator. Performance varies by title, but M3/M4 chips can handle many exclusives.",
-        bestFor: ["Demon's Souls", "Persona 5"],
-        pros: ["High compatibility", "Resolution scaling"],
-        cons: ["Heavy CPU usage"],
-    },
-    {
-        name: "PCSX2",
-        slug: "pcsx2",
-        platform: "PlayStation 2",
-        image: pcsx2Logo,
-        status: "Stable",
-        version: "v1.7.5000 (Nightly)",
-        lastUpdated: "Daily",
-        description: "A mature PS2 emulator that runs flawlessly on almost all Apple Silicon chips. Supports 4K upscaling.",
-        bestFor: ["MGS 3", "Gran Turismo 4"],
-        pros: ["Runs on M1 Air", "Great upscale quality"],
-        cons: ["Software mode glitches"],
-    },
-    {
-        name: "shadPS4",
-        slug: "shadps4",
-        platform: "PlayStation 4",
-        image: shadps4Logo,
-        status: "Experimental",
-        version: "v0.0.1 (Alpha)",
-        lastUpdated: "Active",
-        description: "Emerging PS4 emulator. Very early stages but promising for 2D games and some 3D titles.",
-        bestFor: ["Indie titles", "Homebrew"],
-        pros: ["First viable PS4 emu", "Rapid progress"],
-        cons: ["Low compatibility"],
-    },
-    {
-        name: "PPSSPP",
-        slug: "ppsspp",
-        platform: "PSP",
-        image: ppssppLogo,
-        status: "Excellent",
-        version: "v1.16",
-        lastUpdated: "1 month ago",
-        description: "The gold standard for portable emulation. Runs native on ARM at 8K+ without issues.",
-        bestFor: ["God of War", "Crisis Core"],
-        pros: ["Extremely efficient", "Great UI"],
-        cons: ["None really"],
-    },
-    {
-        name: "RetroArch",
-        slug: "retroarch",
-        platform: "Multi-System",
-        image: retroArchLogo,
-        status: "Flexible",
-        version: "v1.17.0",
-        lastUpdated: "Stable",
-        description: "All-in-one frontend. Uses 'Metal' video driver for low-latency performance on classic consoles.",
-        bestFor: ["NES/SNES", "Genesis", "PS1"],
-        pros: ["All-in-one", "Shaders (CRT)"],
-        cons: ["Steep learning curve"],
-    },
-    {
-        name: "Mesen",
-        slug: "mesen",
-        platform: "NES / SNES / GB",
-        image: mesenLogo,
-        status: "Perfect",
-        version: "2.0",
-        lastUpdated: "Stable",
-        description: "High-accuracy emulator focusing on perfect reproduction of hardware quirks rather than speed.",
-        bestFor: ["Kaizo Mario", "Metroid"],
-        pros: ["Cycle accurate", "Debug tools"],
-        cons: ["Heavier than others"],
-    },
-];
-
-const getStatusStyles = (status: string) => {
-    switch (status) {
-        case "Experimental":
-            return "bg-red-500/10 text-red-500 border-red-500/20";
-        case "Demanding":
-            return "bg-orange-500/10 text-orange-500 border-orange-500/20";
-        case "Excellent":
-        case "Perfect":
-            return "bg-emerald-500/10 text-emerald-500 border-emerald-500/20";
-        default:
-            return "bg-blue-500/10 text-blue-500 border-blue-500/20";
-    }
+type EmulatorInfo = {
+    name: string;
+    slug: string;
+    image?: StaticImageData | null;
+    status: string;
+    description: string;
 };
+
+type EmulatorCategory = {
+    badge: string;
+    emulators: EmulatorInfo[];
+};
+
+const EMULATOR_CATEGORIES: EmulatorCategory[] = [
+    {
+        badge: "PS1",
+        emulators: [
+            { name: "DuckStation", slug: "duckstation", image: null, status: "Perfect", description: "The absolute best PS1 emulator." },
+            { name: "Gamma", slug: "gamma", image: null, status: "Stable", description: "A popular choice focusing on ease of use." },
+            { name: "OpenEmu", slug: "openemu", image: null, status: "Stable", description: "The premier all-in-one frontend for macOS." },
+            { name: "RetroArch", slug: "retroarch", image: retroArchLogo, status: "Flexible", description: "The Swiss Army knife of emulation." }
+        ]
+    },
+    {
+        badge: "PS2",
+        emulators: [
+            { name: "PCSX2", slug: "pcsx2", image: pcsx2Logo, status: "Stable", description: "Mature PS2 emulator that runs flawlessly." },
+            { name: "AetherSX2", slug: "aethersx2", image: null, status: "Stable", description: "Highly optimized ARM-native emulator." },
+            { name: "Play!", slug: "play", image: null, status: "Experimental", description: "High-level PS2 emulator without needing BIOS." }
+        ]
+    },
+    {
+        badge: "PS3",
+        emulators: [
+            { name: "RPCS3", slug: "rpcs3", image: rpcs3Logo, status: "Demanding", description: "The first open-source PS3 emulator." }
+        ]
+    },
+    {
+        badge: "PS4",
+        emulators: [
+            { name: "shadPS4", slug: "shadps4", image: shadps4Logo, status: "Experimental", description: "Emerging PS4 emulator showing promise." },
+            { name: "fpPS4", slug: "fpps4", image: null, status: "Experimental", description: "Early-stage emulator focusing mostly on 2D titles." },
+            { name: "Spine", slug: "spine", image: null, status: "Experimental", description: "Closed-source PS4 emulator that plays commercial games." }
+        ]
+    },
+    {
+        badge: "PSP / Vita",
+        emulators: [
+            { name: "PPSSPP", slug: "ppsspp", image: ppssppLogo, status: "Excellent", description: "The absolute gold standard for PSP." },
+            { name: "Vita3K", slug: "vita3k", image: null, status: "Stable", description: "First functional PS Vita emulator." }
+        ]
+    },
+    {
+        badge: "NES / SNES",
+        emulators: [
+            { name: "Mesen", slug: "mesen", image: mesenLogo, status: "Perfect", description: "High-accuracy NES/SNES emulator." },
+            { name: "Snes9x", slug: "snes9x", image: null, status: "Perfect", description: "Highly compatible SNES emulator." },
+            { name: "bsnes", slug: "bsnes", image: null, status: "Excellent", description: "Aiming for near-perfect emulation accuracy." }
+        ]
+    },
+    {
+        badge: "N64",
+        emulators: [
+            { name: "simple64", slug: "simple64", image: null, status: "Stable", description: "Easy-to-use N64 emulator." },
+            { name: "RMG", slug: "rmg", image: null, status: "Excellent", description: "Rosalie's Mupen GUI, a modern frontend." }
+        ]
+    },
+    {
+        badge: "GC / Wii",
+        emulators: [
+            { name: "Dolphin", slug: "dolphin", image: null, status: "Excellent", description: "One of the greatest emulators ever made." }
+        ]
+    },
+    {
+        badge: "Switch",
+        emulators: [
+            { name: "Ryujinx", slug: "ryujinx", image: null, status: "Demanding", description: "Accurate Switch emulator in C#." },
+            { name: "Suyu", slug: "suyu", image: null, status: "Demanding", description: "Community fork of Yuzu." }
+        ]
+    },
+    {
+        badge: "GB / DS / 3DS",
+        emulators: [
+            { name: "mGBA", slug: "mgba", image: null, status: "Perfect", description: "Fast, accurate GBA emulator." },
+            { name: "MelonDS", slug: "melonds", image: null, status: "Excellent", description: "Fast and accurate DS emulation." },
+            { name: "Citra", slug: "citra", image: null, status: "Stable", description: "Pioneering 3DS emulator." }
+        ]
+    },
+    {
+        badge: "Xbox Family",
+        emulators: [
+            { name: "Xemu", slug: "xemu", image: null, status: "Stable", description: "Original Xbox emulator." },
+            { name: "Xenia", slug: "xenia", image: null, status: "Experimental", description: "Primary Xbox 360 emulator." }
+        ]
+    },
+    {
+        badge: "SEGA",
+        emulators: [
+            { name: "Genesis PGX", slug: "genesis-plus-gx", image: null, status: "Perfect", description: "Accurate emulator for Sega 8/16-bit." },
+            { name: "Flycast", slug: "flycast", image: null, status: "Excellent", description: "Multi-platform Dreamcast emulator." }
+        ]
+    }
+];
 
 export default function EmulationPage() {
     return (
         <div className="min-h-screen bg-background pt-24 pb-24">
             <div className="section-container">
-
-                {/* Hero */}
-                <div className="mb-24 space-y-4">
+                {/* Header Section */}
+                <div className="mb-16 space-y-4 md:text-left">
                     <h1 className="heading-section">
-                        Core <span className="text-primary">Concepts</span>
+                        Emulator <span className="text-primary">Reference</span>
                     </h1>
-
-                    <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
-                        Understanding how your Mac translates foreign code is the first step to optimization.
+                    <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed md:mx-0">
+                        Curated, tested, and optimized emulators for Apple Silicon architecture across all celebrated decades of gaming.
                     </p>
                 </div>
 
-                {/* Concepts Grid - Simplified Layout */}
-                <div className="grid md:grid-cols-2 gap-6 mb-32">
-                    {/* 1. Emulation vs Virt */}
-                    <div className="bg-card border border-border/50 rounded-3xl p-8 hover:border-primary/20 transition-colors">
-                        <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6">
-                            <Layers className="w-6 h-6 text-secondary" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3">Emulation vs. Virtualization</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                            <strong>Emulation</strong> mimics hardware in software (slow, flexible).
-                            <strong> Virtualization</strong> shares the real CPU with a guest OS (fast, limited).
-                        </p>
-                        <div className="grid grid-cols-2 gap-4 text-xs">
-                            <div className="p-3 rounded-xl bg-muted/30">
-                                <span className="block font-bold text-foreground mb-1">Emulator</span>
-                                <span className="text-muted-foreground">RPCS3, Dolphin</span>
-                            </div>
-                            <div className="p-3 rounded-xl bg-muted/30">
-                                <span className="block font-bold text-foreground mb-1">Virtualizer</span>
-                                <span className="text-muted-foreground">Parallels, VMware</span>
-                            </div>
-                        </div>
+                {/* Table Container */}
+                <div className="w-full border border-border/50 bg-card/30 backdrop-blur-md rounded-3xl overflow-hidden shadow-sm">
+                    {/* Header Row */}
+                    <div className="hidden md:grid grid-cols-12 gap-6 bg-muted/40 p-6 border-b border-border/50 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                        <div className="col-span-3 lg:col-span-2">Console</div>
+                        <div className="col-span-9 lg:col-span-10">Available Emulators</div>
                     </div>
 
-                    {/* 2. Architecture */}
-                    <div className="bg-card border border-border/50 rounded-3xl p-8 hover:border-primary/20 transition-colors">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                            <Cpu className="w-6 h-6 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3">The Rosetta Translation</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                            Most games are x86 (Intel). Your Mac is ARM. <strong>Rosetta 2</strong> translates between them.
-                            Native emulators avoid this penalty.
-                        </p>
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-3 text-xs font-medium">
-                                <span className="w-16">Native</span>
-                                <div className="flex-1 h-2 bg-muted/30 rounded-full overflow-hidden">
-                                    <div className="w-full h-full bg-emerald-500 rounded-full" />
-                                </div>
-                                <span className="text-emerald-500">100%</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-xs font-medium">
-                                <span className="w-16">Rosetta</span>
-                                <div className="flex-1 h-2 bg-muted/30 rounded-full overflow-hidden">
-                                    <div className="w-3/4 h-full bg-blue-500 rounded-full" />
-                                </div>
-                                <span className="text-blue-500">~75%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 3. Graphics */}
-                    <div className="bg-card border border-border/50 rounded-3xl p-8 hover:border-primary/20 transition-colors">
-                        <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                            <Zap className="w-6 h-6 text-accent" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3">Metal vs. Vulkan</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                            Apple uses its own graphics API, <strong>Metal</strong>. Most emulators use <strong>Vulkan</strong>.
-                            Translation layers like MoltenVK bridge this gap, but can cause "shader compilation stutter" when you first enter a new area in a game.
-                        </p>
-                    </div>
-
-                    {/* 4. Ethics */}
-                    <div className="bg-card border border-border/50 rounded-3xl p-8 hover:border-primary/20 transition-colors">
-                        <div className="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6">
-                            <Scale className="w-6 h-6 text-red-500" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3">Legal & Safe</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                            <strong>Emulators are legal.</strong> Piracy is not.
-                            We only support dumping your own BIOS and Game Discs. We do not link to ROM sites.
-                            Preserving your library is a right; downloading others' is a risk.
-                        </p>
-                    </div>
-                </div>
-
-
-                {/* Software Section */}
-                <div className="border-t border-border/40 pt-24">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-                        <div>
-                            <h2 className="text-3xl md:text-5xl font-bold mb-4">Emulator Reference</h2>
-                            <p className="text-muted-foreground max-w-xl">
-                                Curated, tested, and verified for Apple Silicon.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Emulators Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {EMULATORS.map((emu) => (
-                            <Link
-                                href={`/emulators/${emu.slug}`}
-                                key={emu.slug}
-                                className="group relative bg-card border border-border/50 rounded-3xl p-6 hover:border-primary/30 hover:bg-muted/5 transition-all duration-300 flex flex-col"
-                            >
-                                <div className="flex justify-between items-start mb-6">
-                                    <div className="w-16 h-16 bg-background rounded-2xl p-3 border border-border/30 shadow-sm group-hover:scale-105 transition-transform">
-                                        <Image
-                                            src={emu.image}
-                                            alt={emu.name}
-                                            width={64}
-                                            height={64}
-                                            className="w-full h-full object-contain"
-                                        />
-                                    </div>
-                                    <span className={`px-2 py-1 rounded-md text-[10px] uppercase font-bold tracking-wider border ${getStatusStyles(emu.status)}`}>
-                                        {emu.status}
+                    {/* Table Body */}
+                    <div className="divide-y divide-border/40">
+                        {EMULATOR_CATEGORIES.map((category, idx) => (
+                            <div key={idx} className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 hover:bg-muted/10 transition-colors">
+                                
+                                {/* Console Badge Cell */}
+                                <div className="md:col-span-3 lg:col-span-2 flex items-center md:items-start pt-2">
+                                    <span className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-primary/10 text-primary font-bold text-sm tracking-widest border border-primary/20 shadow-inner">
+                                        {category.badge}
                                     </span>
                                 </div>
+                                
+                                {/* Emulators Cell */}
+                                <div className="md:col-span-9 lg:col-span-10 flex flex-wrap gap-2 md:gap-4">
+                                    {category.emulators.map((emu) => (
+                                        <Link
+                                            href={`/emulators/${emu.slug}`}
+                                            key={emu.slug}
+                                            title={emu.description}
+                                            className="group flex flex-col items-center justify-start w-28 sm:w-32 p-2 pt-3 rounded-2xl hover:bg-background/80 hover:shadow-lg border border-transparent hover:border-border/50 transition-all duration-300 relative"
+                                        >
+                                            {/* Recommended Star Absolute Positioning */}
+                                            {(emu.status === "Perfect" || emu.status === "Excellent") && (
+                                                <Star 
+                                                    className="absolute top-2 right-2 w-4 h-4 fill-yellow-500 text-yellow-500 shrink-0 filter drop-shadow-[0_0_6px_rgba(234,179,8,0.5)] z-10"
+                                                    aria-label="Highly Recommended"
+                                                />
+                                            )}
 
-                                <div className="mb-4">
-                                    <h3 className="text-xl font-bold mb-1 flex items-center gap-2">
-                                        {emu.name}
-                                        <ArrowRight className="w-4 h-4 -ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
-                                    </h3>
-                                    <p className="text-xs font-mono text-muted-foreground">{emu.platform}</p>
+                                            {/* Icon */}
+                                            <div className="w-20 h-20 bg-card rounded-2xl p-3 shadow border border-border/30 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                {emu.image ? (
+                                                    <Image
+                                                        src={emu.image}
+                                                        alt={emu.name}
+                                                        width={64}
+                                                        height={64}
+                                                        className="w-full h-full object-contain"
+                                                    />
+                                                ) : (
+                                                    <Gamepad2 className="w-10 h-10 text-muted-foreground/40" />
+                                                )}
+                                            </div>
+
+                                            {/* Title */}
+                                            <span className="text-xs font-semibold text-center text-foreground/80 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                                                {emu.name}
+                                            </span>
+                                        </Link>
+                                    ))}
                                 </div>
-
-                                <p className="text-sm text-muted-foreground line-clamp-3 mb-6 flex-1">
-                                    {emu.description}
-                                </p>
-
-                                {/* Footer Stats */}
-                                <div className="pt-4 border-t border-border/30 grid grid-cols-2 gap-4">
-                                    <div>
-                                        <span className="text-[10px] uppercase text-muted-foreground font-semibold block mb-1">Best For</span>
-                                        <span className="text-xs text-foreground truncate block">{emu.bestFor[0]}</span>
-                                    </div>
-                                    <div className="text-right">
-                                        <span className="text-[10px] uppercase text-muted-foreground font-semibold block mb-1">Updated</span>
-                                        <span className="text-xs text-foreground">{emu.lastUpdated}</span>
-                                    </div>
-                                </div>
-                            </Link>
+                                
+                            </div>
                         ))}
                     </div>
                 </div>

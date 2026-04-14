@@ -108,10 +108,11 @@ export const RichTextComponents = {
             <em className="italic text-primary/80 font-medium">{children}</em>
         ),
         link: ({ children, value }: any) => {
-            const rel = !value.href.startsWith("/") ? "noreferrer noopener" : undefined;
+            const href = value?.href || "#";
+            const rel = !href.startsWith("/") ? "noreferrer noopener" : undefined;
             return (
                 <Link
-                    href={value.href}
+                    href={href}
                     rel={rel}
                     className="text-primary font-medium hover:underline underline-offset-4 decoration-primary/30 transition-all"
                 >
